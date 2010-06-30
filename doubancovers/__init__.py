@@ -24,14 +24,15 @@ import hashlib
 import time
 import os
 from xl.cover import *
-from xl import event, common, settings
+from xl import event, common, settings, providers, metadata
 import logging
 
 import doubanquery
 import doubanprefs
 
 logger = logging.getLogger(__name__)
-DOUBAN =None
+
+DOUBAN_COVER  = None
 
 def enable(exaile):
 	if(exaile.loading):
@@ -40,12 +41,12 @@ def enable(exaile):
 		_enable(None, exaile, None)
 
 def disable(exaile):
-	providers.unregister('covers', DOUBAN)
+	providers.unregister('covers', DOUBAN_COVER)
 
 def _enable(eventname, exaile, nothing):
-	global DOUBAN
-	DOUBAN = DoubanCoverSearch()
-	providers.register('covers', DOUBAN)
+	global DOUBAN_COVER
+	DOUBAN_COVER =  DoubanCoverSearch()
+	providers.register('covers', DOUBAN_COVER)
 	
 def get_prefs_pane():
     return doubanprefs
@@ -61,9 +62,20 @@ class DoubanCoverSearch(CoverSearchMethod):
 		self.starttime = 0
 
 	def find_covers(self, track, limit=-1):
-		(artist, album) = track.get_tag_raw('artist')[0], \
-			track.get_tag_raw('album')[0]
+		try:
+			artist = track.get_tag_raw('artist')[0]
+			album = track.get_tag_raw('album')[0]
+		except (AttributeError, TypeError):
+			return []
+			
+		
 		return self.search_covers("%s, %s" %(artist, album), limit)
+
+	def get_cover_data(self, url):
+		h = urllib.urlopen(url)
+		data = h.read()
+		h.close()
+		return data
 
 	def search_covers(self, search, limit=-1):
 		waittime = 1 - (time.time() - self.starttime)
@@ -71,26 +83,18 @@ class DoubanCoverSearch(CoverSearchMethod):
 		self.starttime = time.time()
 
 		apikey = settings.get_option('plugin/doubancovers/api_key', None)
+		logger.info(apikey)
 
 		try:
 			cover_urls = list(doubanquery.search(search, apikey))
+			logger.info(cover_urls or "no url from douban")
 			if len(cover_urls) == 0:
 				return []
+			return cover_urls
 		except:
+			#traceback.print_exc()
 			return []
 
-		candidants = []
-		for cover_url in cover_urls:
-			try:
-				candidants.append(cover_url)
-			except:
-				return []
 
-		return candidants
 
-	def get_cover_data(self, url):
-		h = urllib.urlopen(url)
-		data = h.read()
-		h.close()
-		return data
 
