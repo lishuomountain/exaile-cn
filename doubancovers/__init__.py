@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #
 #
-# Sun Ning(classicning@gmail.com, http://www.classicning.com)
+# Sun Ning(classicning@gmail.com, http://sunng.info)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -62,13 +62,16 @@ class DoubanCoverSearch(CoverSearchMethod):
 		self.starttime = 0
 
 	def find_covers(self, track, limit=-1):
+		## integration with doubanfm plugin
+		if track.get_tag_raw('cover_url') is not None :
+			logger.info(track.get_tag_raw('cover_url'))
+			return track.get_tag_raw('cover_url')
 		try:
 			artist = track.get_tag_raw('artist')[0]
 			album = track.get_tag_raw('album')[0]
 		except (AttributeError, TypeError):
 			return []
 			
-		
 		return self.search_covers("%s, %s" %(artist, album), limit)
 
 	def get_cover_data(self, url):
