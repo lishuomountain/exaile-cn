@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy project-wide -->
+  <object class="GtkWindow" id="prefs_window">
+    <child>
+      <object class="GtkVBox" id="preferences_pane">
+        <property name="visible">True</property>
+        <property name="border_width">3</property>
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkTable" id="panel">
+            <property name="visible">True</property>
+            <property name="border_width">46</property>
+            <property name="n_rows">5</property>
+            <property name="n_columns">2</property>
+            <property name="column_spacing">6</property>
+            <property name="row_spacing">10</property>
+            <property name="homogeneous">True</property>
+            <child>
+              <object class="GtkLabel" id="label4">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&#x6B4C;&#x8BCD;&#x76EE;&#x5F55;:</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkEntry" id="plugin/LyricDisp/lf">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x2022;</property>
+                <property name="text" translatable="yes">~/lyrics</property>
+                <property name="shadow_type">out</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&#x5B57;&#x4F53;&#x989C;&#x8272;&#xFF1A;</property>
+              </object>
+              <packing>
+                <property name="top_attach">3</property>
+                <property name="bottom_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBox" id="plugin/LyricDisp/ms">
+                <property name="visible">True</property>
+                <property name="model">liststore1</property>
+                <property name="wrap_width">1</property>
+                <child>
+                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                  <attributes>
+                    <attribute name="text">0</attribute>
+                  </attributes>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label2">
+                <property name="visible">True</property>
+                <property name="yalign">0.49000000953674316</property>
+                <property name="label" translatable="yes">&#x663E;&#x793A;&#x6A21;&#x5F0F;&#xFF1A;</property>
+              </object>
+              <packing>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label3">
+                <property name="visible">True</property>
+                <property name="yalign">0.49000000953674316</property>
+                <property name="label" translatable="yes">&#x6B4C;&#x8BCD;&#x6587;&#x4EF6;&#x540D;&#xFF1A;</property>
+              </object>
+              <packing>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="plugin/LyricDisp/lc">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="title" translatable="yes">&#x5B57;&#x4F53;&#x989C;&#x8272;</property>
+                <property name="color">#4343aaaad0d0</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">3</property>
+                <property name="bottom_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBox" id="plugin/LyricDisp/ln">
+                <property name="visible">True</property>
+                <property name="model">liststore2</property>
+                <child>
+                  <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                  <attributes>
+                    <attribute name="text">0</attribute>
+                  </attributes>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label5">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&#x6B4C;&#x8BCD;&#x884C;&#x8DDD;&#xFF1A;</property>
+              </object>
+              <packing>
+                <property name="top_attach">4</property>
+                <property name="bottom_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="plugin/LyricDisp/lyricspacing">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">4</property>
+                <property name="bottom_attach">5</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkListStore" id="liststore1">
+    <columns>
+      <!-- column-name PlayerMode -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">&#x9762;&#x677F;&#x6A21;&#x5F0F;</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">&#x7A97;&#x53E3;&#x6A21;&#x5F0F;</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="liststore2">
+    <columns>
+      <!-- column-name lrcname -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">artist-title.lrc</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">title-artist.lrc</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">&#x4E0E;&#x6B4C;&#x66F2;&#x6587;&#x4EF6;&#x540D;&#x76F8;&#x540C;</col>
+      </row>
+    </data>
+  </object>
+</interface>

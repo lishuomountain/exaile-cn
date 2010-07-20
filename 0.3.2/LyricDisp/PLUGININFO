@@ -1,0 +1,4 @@
+Version='100402'
+Authors=['BillMa <billnowar@gmail.com>']
+Name=_('Lyric Display')
+Description=_('同步显示歌词')

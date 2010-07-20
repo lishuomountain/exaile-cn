@@ -1,0 +1,5 @@
+Version='0.0.3'
+Authors=['Sun Ning <classicning@gmail.com>']
+Name=_('Douban Covers')
+Description='Load album cover from http://www.douban.com/music/'
+
