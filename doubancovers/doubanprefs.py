@@ -19,7 +19,7 @@
 
 
 import os
-from xlgui.prefs import widgets
+from xlgui.preferences import widgets
 from xl.nls import gettext as _
 from xl import xdg
 import logging
@@ -31,7 +31,7 @@ basedir = os.path.dirname(os.path.realpath(__file__))
 ui = os.path.join(basedir, 'doubanprefs_pane.ui')
 
 
-class DoubanAPIKeyPreference(widgets.PrefsItem):
+class DoubanAPIKeyPreference(widgets.Preference):
     default = ''
     name = 'plugin/doubancovers/api_key'
     

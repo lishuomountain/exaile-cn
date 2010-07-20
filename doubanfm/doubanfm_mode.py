@@ -61,11 +61,13 @@ class DoubanfmMode():
         self.volume_scale = self.builder.get_object('volume_scale')
         self.volume_scale.set_value(volume)
 
-        self.mute_button = guiutil.MuteButton(self.builder.get_object('volume_mute_button'))
-        self.mute_button.update_volume_icon(volume)
+        hbox2 = self.builder.get_object('hbox2')
+        self.mute_button = guiutil.VolumeControl()
+        hbox2.pack_end(self.mute_button)
 
         self.cover_box = self.builder.get_object('cover_eventbox1')
-        self.cover = cover.CoverWidget(self.window, self.exaile.covers, self.exaile.player)
+        image = gtk.Image()
+        self.cover = cover.CoverWidget(image)
         self.cover_box.add(self.cover)
 
         self.track_title_label = self.builder.get_object('track_title_label')

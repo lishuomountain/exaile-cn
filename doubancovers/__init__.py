@@ -23,7 +23,7 @@ import urllib
 import hashlib
 import time
 import os
-from xl.cover import *
+from xl.covers import *
 from xl import event, common, settings, providers, metadata
 import logging
 
@@ -48,7 +48,7 @@ def _enable(eventname, exaile, nothing):
 	DOUBAN_COVER =  DoubanCoverSearch()
 	providers.register('covers', DOUBAN_COVER)
 	
-def get_prefs_pane():
+def get_preferences_pane():
     return doubanprefs
 
 class DoubanCoverSearch(CoverSearchMethod):

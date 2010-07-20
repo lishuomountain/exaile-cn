@@ -205,9 +205,9 @@ class lrcWin:
         self.layout = gtk.Layout()
         self.vbox = self.guiMan.get_object('vbox1')
         self.vbox.pack_start(self.layout)
-        self.vbox2 = gtk.VBox()
+
+        self.vbox2 = gtk.VBox(homogeneous = True, spacing = int(self.options['LyricSpacing']))
         self.layout.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse('black'))
-        self.vbox2.set_homogeneous(True)
         self.x = 20
         self.y = 97
         self.window.resize(320,300)
@@ -324,9 +324,8 @@ class lrcWin:
                 if self.lastcolor:
                     self.lastcolor.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse('white'))
                 t = self.labels[self.timeLines[-1]].get_allocation().y
-                self.layout.move(self.vbox2, self.x, 80 - (len(self.timeLines)-2)*17)
+                self.layout.move(self.vbox2, self.x, 80 - (len(self.timeLines)-2)*(17 + int(self.options['LyricSpacing'])))
                 self.labels[self.timeLines[-1]].modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse(self.options['LyricColor']))
-                self.y = self.y-t+80
                 self.lastcolor = self.labels[self.timeLines[-1]]
             elif time < self.timeLines[0]:
                 if self.lastcolor:
@@ -340,8 +339,7 @@ class lrcWin:
                     if (time > self.timeLines[i] and time < self.timeLines[i+1]) or time == self.timeLines[i]:
                         if self.lastcolor:
                             self.lastcolor.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse('white'))
-                        t = self.labels[self.timeLines[0]].get_allocation().y
-                        self.layout.move(self.vbox2, self.x, 80 - i * 17)
+                        self.layout.move(self.vbox2, self.x, 80 - i * (17 + int(self.options['LyricSpacing'])))
                         self.labels[self.timeLines[i]].modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse(self.options['LyricColor']))
                         self.lastcolor = self.labels[self.timeLines[i]]
     def winclose(self,*arg):

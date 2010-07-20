@@ -15,6 +15,7 @@ def ChangeMode(type, player, value):
                 'LyricFolder': settings.get_option('plugin/LyricDisp/lf', '~/lyrics'), \
                 'WindowPositionx': settings.get_option('plugin/LyricDisp/windowpositionx', 'centre'), \
                 'WindowPositiony': settings.get_option('plugin/LyricDisp/windowpositiony', 'centre'), \
+                'LyricSpacing': settings.get_option('plugin/LyricDisp/lyricspacing', '2'), \
                 'Filename': settings.get_option('plugin/LyricDisp/ln' , 'artist-title.lrc')}
     settings.set_option('plugin/LyricDisp/ms',value)
     if PLAYERMODE <> value:
@@ -45,6 +46,7 @@ def _enable(eventname, exaile, nothing):
                 'LyricFolder': settings.get_option('plugin/LyricDisp/lf', '~/lyrics'), \
                 'WindowPositionx': settings.get_option('plugin/LyricDisp/windowpositionx', 'centre'), \
                 'WindowPositiony': settings.get_option('plugin/LyricDisp/windowpositiony', 'centre'), \
+                'LyricSpacing': settings.get_option('plugin/LyricDisp/lyricspacing', '2'), \
                 'Filename': settings.get_option('plugin/LyricDisp/ln' , 'artist-title.lrc')}
     PLAYERMODE = settings.get_option('plugin/LyricDisp/ms', '窗口模式')
     if PLAYERMODE == '面板模式':
@@ -53,5 +55,5 @@ def _enable(eventname, exaile, nothing):
         Win.enable(exaile, options)
     event.add_callback(ChangeMode, 'mode_change')
     EXAILE = exaile
-def get_prefs_pane():
+def get_preferences_pane():
     return LyricDispprefs
