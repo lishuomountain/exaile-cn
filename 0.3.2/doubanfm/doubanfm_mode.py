@@ -57,9 +57,9 @@ class DoubanfmMode():
         self.window = self.builder.get_object('doubanfm_mode_window')
         self.window.connect('destroy', self.hide)
 
-        volume = settings.get_option('player/volume', 1)
+        """volume = settings.get_option('player/volume', 1)
         self.volume_scale = self.builder.get_object('volume_scale')
-        self.volume_scale.set_value(volume)
+        self.volume_scale.set_value(volume)"""
 
         hbox2 = self.builder.get_object('hbox2')
         self.mute_button = guiutil.VolumeControl()

@@ -67,7 +67,10 @@ class Panel(gtk.VBox):
         if bool(self.exaile.player.current):
             artist = self.exaile.player.current.get_tag_display('artist')
             title = self.exaile.player.current.get_tag_display('title')
-            locname = os.path.basename(exaile.player.current.local_file_name())
+            try:
+                locname = os.path.basename(self.exaile.player.current.local_file_name())
+            except AttributeError:
+                locname = '-'.join([artist, title])
             self.lrcSearch(artist, title, locname)
             self.InfoPlay('play')
             if self.isLrcFound:
@@ -80,7 +83,10 @@ class Panel(gtk.VBox):
             lrc = lrcMod.writeLrc(self.lrcLines,self.timeLines,self.timeChange)
             art = self.exaile.player.current.get_tag_display('artist')
             tit = self.exaile.player.current.get_tag_display('title')
-            locname = self.exaile.player.current.local_file_name()
+            try:
+                locname = os.path.basename(self.exaile.player.current.local_file_name())
+            except AttributeError:
+                locname = '-'.join([art, tit])
             lrcMod.saveLrc(lrc,self.options['LyricFolder'], self.ops[self.options['Filename']](art, tit, locname))
 
     def reset(self):
@@ -165,7 +171,10 @@ class Panel(gtk.VBox):
         self.reset()
         artist = track.get_tag_display('artist')
         title = track.get_tag_display('title')
-        locname = os.path.basename(track.local_file_name())
+        try:
+            locname = os.path.basename(self.exaile.player.current.local_file_name())
+        except AttributeError:
+            locname = '-'.join([artist, title])
         self.lrcSearch(artist, title, locname)
         self.InfoPlay('play')
 
@@ -207,7 +216,10 @@ class Panel(gtk.VBox):
             self.lyric = result
             art = self.exaile.player.current.get_tag_display('artist')
             tit = self.exaile.player.current.get_tag_display('title')
-            locname = os.path.basename(self.exaile.player.current.local_file_name())
+            try:
+                locname = os.path.basename(self.exaile.player.current.local_file_name())
+            except AttributeError:
+                locname = '-'.join([art, tit])
             lrcMod.saveLrc(self.lyric,self.options['LyricFolder'], self.ops[self.options['Filename']](art, tit, locname))
             (self.lrcLines,self.timeLines) = lrcMod.lrcAny(self.lyric)
             self.text = '\n'.join([self.lrcLines[i] for i in self.timeLines])
