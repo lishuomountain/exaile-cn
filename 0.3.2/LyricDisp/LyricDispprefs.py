@@ -34,6 +34,10 @@ class LyricSpacing(widgets.Preference):
     default = '2'
     name = 'plugin/LyricDisp/lyricspacing'
 
+class WindowOpacity(widgets.Preference):
+    default = '0.8'
+    name = 'plugin/LyricDisp/op'
+
 class LyricColor(widgets.ColorButtonPreference):
     def _setup_change(self):
         widgets.ColorButtonPreference._setup_change(self)

@@ -12,7 +12,7 @@
           <object class="GtkTable" id="panel">
             <property name="visible">True</property>
             <property name="border_width">46</property>
-            <property name="n_rows">5</property>
+            <property name="n_rows">6</property>
             <property name="n_columns">2</property>
             <property name="column_spacing">6</property>
             <property name="row_spacing">10</property>
@@ -141,6 +141,30 @@
                 <property name="right_attach">2</property>
                 <property name="top_attach">4</property>
                 <property name="bottom_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label6">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&#x7A97;&#x53E3;&#x900F;&#x660E;&#x5EA6;&#xFF1A;</property>
+              </object>
+              <packing>
+                <property name="top_attach">5</property>
+                <property name="bottom_attach">6</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="plugin/LyricDisp/op">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">3</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">5</property>
+                <property name="bottom_attach">6</property>
               </packing>
             </child>
           </object>

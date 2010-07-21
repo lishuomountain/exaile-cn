@@ -11,7 +11,7 @@ EXAILE =None
 def ChangeMode(type, player, value):
     global PLAYERMODE, EXAILE
     options = {'LyricColor': settings.get_option('plugin/LyricDisp/lc' , '#43AAD0'), \
-                'Opacity': settings.get_option('plugin/LyricDisp/op', 0.8), \
+                'Opacity': float(settings.get_option('plugin/LyricDisp/op', '0.8')), \
                 'LyricFolder': settings.get_option('plugin/LyricDisp/lf', '~/lyrics'), \
                 'WindowPositionx': settings.get_option('plugin/LyricDisp/windowpositionx', 'centre'), \
                 'WindowPositiony': settings.get_option('plugin/LyricDisp/windowpositiony', 'centre'), \
@@ -42,7 +42,7 @@ def disable(exaile):
 def _enable(eventname, exaile, nothing):
     global PLAYERMODE, EXAILE
     options = {'LyricColor': settings.get_option('plugin/LyricDisp/lc' , '#43AAD0'), \
-                'Opacity': settings.get_option('plugin/LyricDisp/op', 0.8), \
+                'Opacity': float(settings.get_option('plugin/LyricDisp/op', '0.8')), \
                 'LyricFolder': settings.get_option('plugin/LyricDisp/lf', '~/lyrics'), \
                 'WindowPositionx': settings.get_option('plugin/LyricDisp/windowpositionx', 'centre'), \
                 'WindowPositiony': settings.get_option('plugin/LyricDisp/windowpositiony', 'centre'), \
